@@ -1,0 +1,10 @@
+flask
+pymongo
+python-dotenv
+flask-caching
+flask-login
+flask-jwt-extended
+openai
+numpy
+scipy
+werkzeug 

@@ -1,0 +1,8 @@
+# Ignore sensitive files and logs
+.env
+app.log
+__pycache__/
+*.pyc
+node_modules/
+dist/
+build/ 
