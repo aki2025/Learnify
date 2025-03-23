@@ -25,7 +25,7 @@ A web-based learning platform that dynamically pulls content from a GitHub repos
 - **Authentication**: Flask-Login, Flask-JWT-Extended
 - **AI Integration**: OpenAI API
 
-## Setup Instructions
+## Installation
 
 ### Prerequisites
 - **Node.js** and **npm** (for front-end)
@@ -37,87 +37,87 @@ A web-based learning platform that dynamically pulls content from a GitHub repos
 1. Navigate to the `frontend` directory:
    ```bash
    cd frontend
-
 2. Install dependencies:
-bash
-
-npm install
-
+   ```bash
+   npm install
 3. Start the development server:
-bash
+   ```bash
+   npm start
+   ```
+   The app will run on http://localhost:3000.
 
-npm start
+### Back-End Setup
+1. Navigate to the `backend` directory:
+   ```bash
+   cd backend
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+3. Create a `.env` file with the following environment variables:
+   ```
+   MONGO_URI=mongodb://localhost:27017/learning_platform
+   SECRET_KEY=your-secret-key
+   GITHUB_TOKEN=your-github-token
+   OPENAI_API_KEY=your-openai-api-key
+   JWT_SECRET_KEY=your-jwt-secret-key
+   DEBUG=True
+   PORT=5000
+4. Start the Flask server:
+   ```bash
+   python src/app.py
+   ```
+   The API will run on http://localhost:5000.
 
-The app will run on http://localhost:3000.
+### MongoDB Setup
+- Ensure MongoDB is running and the `MONGO_URI` points to your instance.
+- Seed the `libraries_collection` with sample data, e.g.:
+  ```json
+  { "id": "1", "name": "React", "description": "A JS library", "link": "https://reactjs.org" }
+  ```
 
-4. Back-End Setup
-Navigate to the backend directory:
-bash
+## Usage
 
-cd backend
+1. Start the front-end development server:
+   ```bash
+   cd frontend
+   npm start
+   ```
+2. Start the back-end Flask server:
+   ```bash
+   cd backend
+   python src/app.py
+   ```
+3. Access the application at http://localhost:3000.
 
-6 Install dependencies:
-bash
+## API
 
-pip install -r requirements.txt
+The Learning Platform provides the following API endpoints:
 
-7. Create a .env file with the following environment variables:
+- `/api/search`: Performs semantic search using OpenAI embeddings.
+- `/api/chat`: Interacts with the AI chatbot powered by OpenAI's GPT-3.5-turbo.
+- `/api/auth/register`: Registers a new user.
+- `/api/auth/login`: Authenticates a user and returns a JWT token.
+- `/api/auth/logout`: Logs out a user and invalidates the JWT token.
 
-MONGO_URI=mongodb://localhost:27017/learning_platform
-SECRET_KEY=your-secret-key
-GITHUB_TOKEN=your-github-token
-OPENAI_API_KEY=your-openai-api-key
-JWT_SECRET_KEY=your-jwt-secret-key
-DEBUG=True
-PORT=5000
+## Contributing
 
-8. Start the Flask server:
-bash
+Contributions are welcome! Please follow these steps:
 
-python src/app.py
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and ensure the tests pass.
+4. Submit a pull request with a detailed description of your changes.
 
-The API will run on http://localhost:5000.
+## License
 
-9. MongoDB Setup
-Ensure MongoDB is running and the MONGO_URI points to your instance.
+This project is licensed under the [MIT License](LICENSE).
 
-Seed the libraries_collection with sample data, e.g.:
-json
+## Testing
 
-{ "id": "1", "name": "React", "description": "A JS library", "link": "https://reactjs.org" }
+To run the tests, execute the following command in the `backend` directory:
 
-10. Deployment on Replit
-Create a Replit Project: Import this repository or start a new Python repl.
+```bash
+pytest
+```
 
-Set Up Secrets: In the "Secrets" tab, add:
-MONGO_URI
-
-SECRET_KEY
-
-GITHUB_TOKEN
-
-OPENAI_API_KEY
-
-JWT_SECRET_KEY
-
-Install Dependencies:
-Back-end: pip install -r requirements.txt (in backend)
-
-Front-end: npm install (in frontend)
-
-Configure Procfile: Use the provided Procfile to run the back-end.
-
-Run the App: Click "Run" in Replit to start the app. Adjust the front-end proxy in package.json if needed.
-
-NOTES
-THE /API/SEARCH ENDPOINT USES OPENAI EMBEDDINGS FOR SEMANTIC SEARCH.
-
-THE /API/CHAT ENDPOINT INTEGRATES WITH OPENAI'S GPT-3.5-TURBO FOR THE CHATBOT.
-
-USER AUTHENTICATION IS SECURED WITH FLASK-LOGIN AND JWT TOKENS.
-
-THE PLATFORM IS FULLY FUNCTIONAL AND READY FOR DEPLOYMENT.
-
-THIS PROJECT IS COMPLETE AND OPTIMIZED FOR BOTH DEVELOPMENT AND PRODUCTION ENVIRONMENTS. FOR FURTHER ASSISTANCE, FEEL FREE TO REACH OUT!
-
-   
+This will run the test suite for the Learning Platform's back-end.
